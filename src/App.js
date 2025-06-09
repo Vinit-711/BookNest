@@ -1,11 +1,22 @@
 // import logo from './logo.svg';
-import './App.css'
+import "./App.css";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Authors from "./components/Authors";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-700">
-    Hello world!
-  </h1>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Authors" element={<Authors />} />
+      </Routes>
+      <Footer/>
+    </Router>
   );
 }
 

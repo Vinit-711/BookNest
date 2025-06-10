@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Authors from "./components/Authors";
 import Footer from "./components/Footer";
 import AboutAuthors from './components/AboutAuthors';
+import Login from './components/Login'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/Authors" element={<Authors />} />
         <Route path="/Authors/:id" element={<AboutAuthors />} />
         <Route path="/AboutAuthors" element={<AboutAuthors />}/>

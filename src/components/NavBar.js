@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import Login from "./Login";
 
 export default function NavBar() {
+  const Navigate = useNavigate();
+
   return (
     <nav className="bg-[#2c4c49] text-white px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 fixed top-0 left-0 w-full">
       <div className="text-2xl font-bold text-[#d09232]">Plot-Pix</div>
@@ -29,13 +33,15 @@ export default function NavBar() {
       </ul>
 
       <div className="flex items-center space-x-2">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="px-3 py-1 rounded-md bg-white text-[#2c4c49] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d09232]"
-        />
-        <button className="px-4 py-1 rounded-md bg-[#d09232] text-white hover:bg-yellow-500">
-          Search
+        <button className="px-4 py-1 text-white " onClick={()=>{
+          Navigate('/Login')
+        }}>
+          Login
+        </button>
+        <button className="px-4 py-1 rounded-md bg-[#d09232] text-white hover:bg-yellow-500 " onClick={()=>{
+          Navigate('/Login')
+        }}>
+          Sign-Up
         </button>
       </div>
     </nav>

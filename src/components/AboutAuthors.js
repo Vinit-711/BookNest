@@ -1,18 +1,15 @@
 import { useLocation } from "react-router-dom";
 // import authors from "../Data/AuthorsData";
 export default function Author() {
- 
-  
-
   const location = useLocation();
   const author = location.state;
 
-  if(!author){
+  if (!author) {
     return (
-        <div className="pt-32 text-center text-white">
-            <h2 className="text-2xl">No author Data Found.</h2>
-        </div>
-    )
+      <div className="pt-32 text-center text-white">
+        <h2 className="text-2xl">No author Data Found.</h2>
+      </div>
+    );
   }
   return (
     <>
@@ -26,26 +23,28 @@ export default function Author() {
               <div className="h-1 w-20 bg-yellow-500 rounded"></div>
             </div>
             <p className="lg:w-1/2 w-full leading-relaxed text-white">
-              {author.desc}
+              {author.bio}
             </p>
           </div>
-        <h2 className="text-2xl font-semibold mt-10 mb-4">Bestsellers</h2>
+          <h2 className="text-2xl font-semibold mt-10 mb-4 text-white">
+            Bestsellers
+          </h2>
           <div className="flex flex-wrap -m-4">
             {author.bestsellers.map((book, index) => (
-              <div className="xl:w-1/4 md:w-1/2 p-4">
-                <div className="bg-gray-100 p-6 rounded-lg" key={index}>
+              <div className="xl:w-1/4 md:w-1/2 p-4" key={index}>
+                <div className="bg-gray-100 p-6 rounded-lg">
                   <img
                     className="h-40 rounded w-full object-cover object-center mb-6"
-                    src="{book.image}"
-                    alt="{book.title}"
+                    src={book.image}
+                    alt={book.title}
                   />
-                  
+
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                     {book.title}
                   </h2>
-                  <p className="leading-relaxed text-base">
-                    {author.desc}
-                  </p>
+                  <button className="bg-[#4f6d6a] hover:bg-[#769f9b] text-white font-bold py-2 px-4 border-b-4 border-yellow-500 hover:border-yellow-300 rounded">
+                    Watch Now
+                  </button>
                 </div>
               </div>
             ))}

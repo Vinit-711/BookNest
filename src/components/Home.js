@@ -27,7 +27,7 @@ export default function Home() {
                         Watch Now
                       </button>
                       <a
-                        className="text-l text-yellow-700 inline-flex items-center md:mb-2 lg:mb-0"
+                        className="text-l text-yellow-700 inline-flex items-center md:mb-2 lg:mb-0 ml-9"
                         href="/"
                       >
                         Learn More

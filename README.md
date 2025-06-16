@@ -1,24 +1,37 @@
-# 📖 PlotPix – Turn Books into Animated Stories
+# 📚 BookNest
 
-**PlotPix** is a React-based application that brings books to life by converting written content into animated video experiences. It’s designed for users who prefer a more engaging and visual way of enjoying stories.
+**BookNest** is a sleek and modern React web application designed to showcase a curated collection of books. Whether you're a literature enthusiast or just looking for your next great read, BookNest provides an elegant platform to explore, browse, and discover books across genres.
 
 ---
-## ✨ Features
 
-- 📚 Browse a library of books
-- 🎥 Watch animated versions of book content
-- 🎵 Optional text-to-speech narration (Google TTS)
-- 🎨 Switch themes dynamically with a theme selector
-- 🧭 Navigate seamlessly using React Router
+## 🚀 Features
+
+- 🔍 Explore books by **title**, **category**, and **description**
+- 🖼️ Dynamic book cards with **images** and **hover effects**
+- 🧩 Modular component-based architecture using **React**
+- 🎨 Responsive design using **Tailwind CSS**
+- 🗂️ Scalable data structure using **JS/JSON arrays**
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, JSX
-- **Routing:** React Router DOM
-- **Styling:** Tailwind CSS / Bootstrap
-- **Media Playback:** React Player
-- **Voice Support (optional):** Google Text-to-Speech API
+- **Frontend**: React.js
+- **Styling**: Tailwind CSS
+- **Data Handling**: JavaScript (static arrays or JSON)
+- **Animations**: GSAP
 
 ---
+
+## 📁 Folder Structure
+
+```bash
+BookNest/
+├── public/
+├── src/
+│   ├── assets/             # Book images, icons, etc.
+│   ├── components/         # Reusable React components
+│   ├── data/               # Book data (booksData.js)
+│   ├── pages/              # Page-level components (e.g., Home, Authors)
+│   ├── App.js              # Main app file
+│   └── index.js            # Entry point

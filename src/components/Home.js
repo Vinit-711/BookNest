@@ -22,29 +22,12 @@ export default function Home() {
                       {book.title}
                     </h1>
                     <p className="leading-relaxed mb-3">{book.description}</p>
-                    <div className="flex items-center flex-wrap ">
-                      <button className="bg-[#4f6d6a] hover:bg-[#769f9b] text-white font-bold py-2 px-5 mr-12 border-b-4 border-yellow-500 hover:border-yellow-300 rounded">
+                    <div className="flex items-center justify-between mt-4">
+                      
+
+                      <button className="bg-[#4f6d6a] hover:bg-[#769f9b] text-white font-bold py-2 px-4 md:px-6 border-b-4 border-yellow-500 hover:border-yellow-300 rounded whitespace-nowrap mt-2 md:mt-0 ">
                         Watch Now
                       </button>
-                      <a
-                        className="text-l text-yellow-700 inline-flex items-center md:mb-2 lg:mb-0 ml-9"
-                        href="/"
-                      >
-                        Learn More
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                      
                     </div>
                   </div>
                 </div>

@@ -1,49 +1,68 @@
-import { Link, useNavigate } from "react-router-dom";
-// import { useState } from "react";
-// import Login from "./Login";
+import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function NavBar() {
-  const Navigate = useNavigate();
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    let lastState = null;
+    const trigger = ScrollTrigger.create({
+      start: "top top",
+      end: "+=200",
+      scrub: 1,
+      onUpdate: (self) => {
+        const scrolled = self.scroll() > 50;
+
+        if (scrolled !== lastState) {
+          lastState = scrolled;
+          gsap.to(navRef.current, {
+            backgroundColor: scrolled ? "#000" : "rgba(0,0,0,0.0)", // no flicker
+            height: scrolled ? "100px" : "135px",
+            boxShadow: scrolled
+              ? "0 4px 12px rgba(0, 0, 0, 0.1)"
+              : "0 0 0 rgba(0,0,0,0)",
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
+      },
+    });
+
+    return () => trigger.kill();
+  }, []);
+
 
   return (
-    <nav className="bg-[#2c4c49] text-white px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 fixed top-0 left-0 w-full">
-      <div className="text-2xl font-bold text-[#d09232]">Plot-Pix</div>
-
-      <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
-        <li>
-          <Link to="/" className="hover:text-[#d09232]">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/About" className="hover:text-[#d09232]">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/Contact" className="hover:text-[#d09232]">
-            Contact
-          </Link>
-        </li>
-        <li>
-          <Link to="/Authors" className="hover:text-[#d09232]">
-            Authors
-          </Link>
-        </li>
-      </ul>
-
-      <div className="flex items-center space-x-2">
-        <button className="px-4 py-1 text-white " onClick={()=>{
-          Navigate('/Login')
-        }}>
-          Login
-        </button>
-        <button className="px-4 py-1 rounded-md bg-[#d09232] text-white hover:bg-yellow-500 " onClick={()=>{
-          Navigate('/Login')
-        }}>
-          Sign-Up
-        </button>
+    <>
+      <div
+        ref={navRef}
+        className="navbar flex justify-start gap-[50px] items-center px-[150px] py-[0px] h-[135px] w-full fixed z-[99]"
+      >
+        <img
+          src="./android-chrome-512x512.png"
+          alt="plotpix-logo"
+          className="h-[70px] rounded-full"
+        />
+        <Link
+          to="/Home.js"
+          className="text-2xl font-bold text-[#f7f0e0]  uppercase"
+        >
+          Home
+        </Link>
+        <Link to="/" className="text-2xl font-bold text-[#f7f0e0] uppercase">
+          About
+        </Link>
+        <Link to="/" className="text-2xl font-bold text-[#f7f0e0] uppercase">
+          Explore Authors
+        </Link>
+        <Link to="/" className="text-2xl font-bold text-[#f7f0e0] uppercase">
+          Explore Books
+        </Link>
       </div>
-    </nav>
+    </>
   );
 }

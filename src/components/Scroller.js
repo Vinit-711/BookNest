@@ -5,7 +5,7 @@ export default function Scroller() {
   return (
     <div className="h-[100vh] w-full z-[10] flex relative items-center ">
       <h3 className="text-[14vh] font-[800] mx-[5vw] text-wrap">
-        Trending Books
+        Trending <span className="font-dancing">Books</span>
       </h3>
       <div
         id="scroller"

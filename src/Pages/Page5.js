@@ -46,7 +46,7 @@ export default function Page5() {
             scale: 1,
             duration: 2,
           },
-          i * 1.5
+          i * 2
         ).to(
           [feature.title, feature.image],
           {
@@ -55,7 +55,7 @@ export default function Page5() {
             scale: 0.8,
             duration: 2,
           },
-          i * 1.5 + 1
+          i * 2 + 1
         );
       });
     }, containerRef);

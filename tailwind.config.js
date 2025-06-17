@@ -16,8 +16,10 @@ module.exports = {
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
-        edu: ['"Edu NSW ACT Hand Pre"', 'cursive'],
-        roboto: ['"Roboto Flex"', 'sans-serif'],
+        cursive: ['Cedarville Cursive', 'cursive'],
+        dancing: ['Dancing Script', 'cursive'],
+        edu: ['Edu NSW ACT Hand Pre', 'cursive'],
+        roboto: ['Roboto Flex', 'sans-serif'],
       },
     },
   },

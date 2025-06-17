@@ -64,6 +64,7 @@ export default function Page1() {
         y: 0,
         opacity: 1,
         scale: 1,
+        duration:2,
         ease: "power3.out",
         scrollTrigger: {
           trigger: btnRef.current,
@@ -82,23 +83,23 @@ export default function Page1() {
       >
         <h1
           ref={textRef}
-          className="text-[6vw] font-[800] font-edu relative z-10 text-[#f7f0e0] 
-        before:content-['WELCOME_TO_BOOKNEST']  before-stroke before:absolute before:top-[-8px] before:left-[-8px] before:z-[-1] before:text-black"
+          className="text-[6vw] font-[800] relative z-10 text-[#f7f0e0] 
+        before:content-['WELCOME_TO_BOOKNEST'] font-edu before-stroke before:absolute before:top-[-8px] before:left-[-8px] before:z-[-1] before:text-black"
         >
           WELCOME TO BOOKNEST
         </h1>
         <h2
           ref={text1Ref}
-          className="text-[30px] font-[800] mt-[10px] mb-[20px] text-[#f7f0e0] uppercase tracking-[4px]"
+          className="text-[30px] font-[800]  mt-[10px] mb-[20px] text-[#f7f0e0] uppercase tracking-[4px]"
         >
           Your cozy corner for discovering captivating books
         </h2>
       </div>
       <button
         ref={btnRef}
-        className="h-[8vh] w-[12vw] border-[2px] rounded-[14px] translate-x-[76vw] text-[1.5vw] translate-y-[-80px] z-40 transform transition-transform duration-100 hover:bg-[#f7f0e0] hover:text-[#000]"
+        className="group h-[8vh] w-[12vw]  border-[2px] rounded-[14px] translate-x-[76vw] text-[2vw] translate-y-[-80px] z-40 transform transition-transform duration-300 hover:bg-[#f7f0e0]  hover:text-[#000] "
       >
-        Explore <i class="ri-arrow-right-line hover:text-[#000]"></i>
+        Explore <i class="ri-arrow-right-line text-white group-hover:text-black  transition-colors  duration-300"></i>
       </button>
     </>
   );

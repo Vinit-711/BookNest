@@ -21,9 +21,9 @@ export default function Page4() {
         duration: 5,
         scrollTrigger: {
           trigger: colon1Ref.current,
-
+          
           start: "top 15%",
-          end: "top 45%",
+          end: "top 100%",
           scrub: 3,
         },
       }
@@ -42,7 +42,8 @@ export default function Page4() {
         scrollTrigger: {
           trigger: colon2Ref.current,
 
-          start: "top 90%",
+          start: "top 86%",
+          
           end: "top 80%",
           scrub: 3,
         },

@@ -29,7 +29,7 @@ export default function Page3() {
     >
       <h1
         ref={textRef}
-        className="uppercase text-[35vw]  font-[700] translate-x-[50%] tracking-[40px]"
+        className="uppercase text-[35vw] font-[700] translate-x-[50%] tracking-[40px]"
       >
         features
       </h1>

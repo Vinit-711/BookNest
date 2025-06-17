@@ -59,6 +59,7 @@ export default function NavBar() {
           <Link className="nav-link " to="/AboutUs">About</Link>
           <Link className="nav-link " to="/ExploreAuthors">Explore Authors</Link>
           <Link className="nav-link " to="/ExploreBooks">Explore Books</Link>
+          <button className="nav-link bg-[#f7f0e0] rounded-md text-[#563a1f] py-1 px-1 mt-[-6px]">Log-in</button>
         </div>
       </nav>
     </>

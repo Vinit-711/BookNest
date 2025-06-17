@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 export default function Cursor() {
   const cursorRef = useRef(null);
@@ -20,15 +19,25 @@ export default function Cursor() {
 
     document.addEventListener("mousemove", moveCursor);
 
-    return () => document.removeEventListener("mousemove", moveCursor);
+    return () => {
+      document.removeEventListener("mousemove", moveCursor);
+    };
   }, []);
+
   return (
     <>
-      <div ref={blurRef} id="curosr-blur" className="fixed h-[400px] w-[400px] rounded-full bg-[#f7f0e0] opacity-40 pointer-events-none z-0 blur-[40px]"></div>
+      <div
+        ref={blurRef}
+        id="cursor-blur"
+        className="fixed h-[300px] w-[300px] rounded-full 
+                   bg-[#c8c4b0] opacity-15 pointer-events-none z-[9] blur-[60px]"
+      ></div>
+
       <div
         ref={cursorRef}
-        id="cursor"
-        className="fixed h-[20px] w-[20px] bg-[#563a1f] rounded-full pointer-events-none z-50"
+        id="custom-cursor"
+        className="fixed h-[18px] w-[18px] bg-[#3d3a2a] 
+                   rounded-full pointer-events-none z-[99]"
       ></div>
     </>
   );

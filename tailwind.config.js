@@ -12,7 +12,12 @@ module.exports = {
         },
       },
       animation: {
-        scrollX: "scrollX 10s linear infinite",
+        scrollX: "scrollX 18s linear infinite",
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        edu: ['"Edu NSW ACT Hand Pre"', 'cursive'],
+        roboto: ['"Roboto Flex"', 'sans-serif'],
       },
     },
   },

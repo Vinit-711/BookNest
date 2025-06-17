@@ -7,62 +7,60 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function NavBar() {
   const navRef = useRef(null);
-
+  const textRef = useRef(null);
   useEffect(() => {
-    let lastState = null;
-    const trigger = ScrollTrigger.create({
-      start: "top top",
-      end: "+=200",
-      scrub: 1,
-      onUpdate: (self) => {
-        const scrolled = self.scroll() > 50;
-
-        if (scrolled !== lastState) {
-          lastState = scrolled;
-          gsap.to(navRef.current, {
-            backgroundColor: scrolled ? "#000" : "rgba(0,0,0,0.0)", // no flicker
-            height: scrolled ? "100px" : "135px",
-            boxShadow: scrolled
-              ? "0 4px 12px rgba(0, 0, 0, 0.1)"
-              : "0 0 0 rgba(0,0,0,0)",
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        }
+    var tl = gsap.timeline();
+    tl.fromTo(
+      navRef.current,
+      {
+        y: -80,
+        opacity: 0,
       },
-    });
-
-    return () => trigger.kill();
-  }, []);
-
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.4,
+      }
+    );
+    tl.fromTo(
+      ".nav-link",
+      {
+        y: -80,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger:0.2,
+      }
+    );
+  });
 
   return (
     <>
-      <div
+      <nav
         ref={navRef}
-        className="navbar flex justify-start gap-[50px] items-center px-[150px] py-[0px] h-[135px] w-full fixed z-[99]"
+        className="navbar flex justify-start gap-[50px] items-center px-[150px] py-[0px] h-[135px] w-full  z-[99] "
       >
-        <img
-          src="./android-chrome-512x512.png"
-          alt="plotpix-logo"
-          className="h-[70px] rounded-full"
-        />
-        <Link
-          to="/Home.js"
-          className="text-2xl font-bold text-[#f7f0e0]  uppercase"
+        <div id="logo" ref={navRef} className="h-[90px] w-full">
+          <img
+            src="./android-chrome-512x512.png"
+            alt="BookNest Logo"
+            className="h-[70px] rounded-full"
+          ></img>
+        </div>
+        <div
+          ref={textRef}
+          id="right-side"
+          className="flex gap-[50px] text-[1.6vw] whitespace-nowrap font-[600]"
         >
-          Home
-        </Link>
-        <Link to="/" className="text-2xl font-bold text-[#f7f0e0] uppercase">
-          About
-        </Link>
-        <Link to="/" className="text-2xl font-bold text-[#f7f0e0] uppercase">
-          Explore Authors
-        </Link>
-        <Link to="/" className="text-2xl font-bold text-[#f7f0e0] uppercase">
-          Explore Books
-        </Link>
-      </div>
+          <Link className="nav-link " to="/Home.js">Home</Link>
+          <Link className="nav-link " to="/AboutUs">About</Link>
+          <Link className="nav-link " to="/ExploreAuthors">Explore Authors</Link>
+          <Link className="nav-link " to="/ExploreBooks">Explore Books</Link>
+        </div>
+      </nav>
     </>
   );
 }

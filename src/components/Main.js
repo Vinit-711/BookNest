@@ -5,6 +5,9 @@ import Page3 from "../Pages/Page3";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Page4 from "../Pages/Page4";
+import NavBar from './NavBar';
+import Page5 from "../Pages/Page5";
+import Page6 from "../Pages/Page6";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,10 +35,14 @@ export default function Main() {
       ref={mainRef}
       className="relative bg-[rgba(0,0,0,0.4)] transition-colors duration-100"
     >
-      <Page1 />
+
+      <NavBar/>
+      <Page1  />
       <Page2 />
       <Page3 />
       <Page4 />
+      <Page5/>
+      <Page6/>
     </div>
   );
 }

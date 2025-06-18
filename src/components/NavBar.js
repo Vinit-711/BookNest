@@ -25,13 +25,14 @@ export default function NavBar() {
   }, []);
 
   useEffect(() => {
-    const tll = gsap.timeline();
-    tll.from(menuRef.current, {
-      opacity: 0,
-      y: -40,
-      duration: 1.2,
-    });
-  });
+  if (menuOpen && menuRef.current) {
+    gsap.fromTo(
+      menuRef.current,
+      { opacity: 0, y: -40 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+    );
+  }
+}, [menuOpen]);
 
   return (
     <>

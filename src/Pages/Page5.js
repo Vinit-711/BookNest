@@ -20,7 +20,7 @@ export default function Page5() {
           trigger: sectionRef.current,
           start: "top top",
           end: "+=3000",
-          scrub: 0.3,
+          scrub: 2,
           pin: true,
         },
       });
@@ -44,18 +44,18 @@ export default function Page5() {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 2,
+            duration: 1,
           },
-          i * 2
+          i * 1.6
         ).to(
           [feature.title, feature.image],
           {
             opacity: 0,
             y: -100,
             scale: 0.8,
-            duration: 2,
+            duration: 1,
           },
-          i * 2 + 1
+          i * 1.6 + 1
         );
       });
     }, containerRef);
@@ -64,16 +64,16 @@ export default function Page5() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="h-[100vh] w-full relative overflow-hidden">
+    <div ref={sectionRef} className="min-h-screen w-full relative overflow-hidden">
       <div ref={containerRef} className="w-full h-full  text-white flex">
         <div className="select-none w-[10%] h-full flex flex-col items-center justify-center text-center px-2">
-          <div className="border-l-4 border-white h-[60%]"></div>
-          <span className="rotate-[-90deg] mt-[8vh] tracking-widest text-[1.5rem] text-white/50">
+          <div className="border-l-4 border-white h-1/2"></div>
+          <span className="rotate-[-90deg] mt-16 tracking-[0.1rem] text-sm text-white/50 ">
             FEATURES
           </span>
         </div>
 
-        <div className="relative w-[80%] h-full flex items-center justify-center">
+        <div className="relative w-[80%] h-full flex flex-col items-center justify-center">
           {[
             {
               title: "Review",
@@ -98,18 +98,18 @@ export default function Page5() {
           ].map((item, i) => (
             <div
               key={i}
-              className="absolute select-none flex items-center justify-center w-full h-full gap-[40px] whitespace-nowrap tracking-[20px]"
+              className="absolute select-none flex flex-col items-center justify-center w-full h-full gap-[40px] whitespace-nowrap tracking-[20px]"
             >
               <h1
                 ref={(el) => (titles.current[i] = el)}
-                className="text-[8vw] font-bold drop-shadow-lg"
+                className="text-xl font-bold drop-shadow-lg"
               >
                 {item.title}
               </h1>
               <img
                 ref={(el) => (images.current[i] = el)}
                 src={item.image}
-                className="h-[50vh] w-[50vh] rounded-full mt-6 object-cover shadow-2xl"
+                className="h-40 w-40 rounded-full mt-6 object-cover shadow-2xl"
                 alt={item.title}
               />
             </div>
@@ -117,7 +117,7 @@ export default function Page5() {
         </div>
 
         <div className="w-[10%] select-none h-full flex items-center justify-center px-2">
-          <div className="text-[1.5rem] text-white/60 rotate-[90deg] whitespace-nowrap tracking-wider">
+          <div className="text-sm text-white/60 rotate-[90deg] whitespace-nowrap tracking-[0.2rem]">
             FROM A CAGED WORLD TO BOUNDLESS TALES
           </div>
         </div>

@@ -8,11 +8,11 @@ module.exports = {
       keyframes: {
         scrollX: {
           "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100vw)" }, 
+          "100%": { transform: "translateX(-200rem)" }, 
         },
       },
       animation: {
-        scrollX: "scrollX 18s linear infinite",
+        scrollX: "scrollX 20s linear infinite",
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

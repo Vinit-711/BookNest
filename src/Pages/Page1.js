@@ -8,8 +8,10 @@ export default function Page1() {
   const textRef = useRef(null);
   const text1Ref = useRef(null);
   const btnRef = useRef(null);
+
   useEffect(() => {
-    var tl = gsap.timeline();
+    const tl = gsap.timeline();
+
     tl.fromTo(
       textRef.current,
       {
@@ -17,6 +19,7 @@ export default function Page1() {
         opacity: 0,
         scale: 0.5,
         ease: "power1.out",
+         
       },
       {
         y: 0,
@@ -24,12 +27,14 @@ export default function Page1() {
         scale: 1,
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 45%",
+          start: "top 50%",
           end: "top 100%",
           scrub: 2,
+          
         },
       }
     );
+
     tl.fromTo(
       text1Ref.current,
       {
@@ -48,10 +53,12 @@ export default function Page1() {
           trigger: textRef.current,
           start: "top 40%",
           end: "top 100%",
+          
           scrub: 2,
         },
       }
     );
+
     tl.fromTo(
       btnRef.current,
       {
@@ -64,43 +71,51 @@ export default function Page1() {
         y: 0,
         opacity: 1,
         scale: 1,
-        duration:2,
+        duration: 2,
         ease: "power3.out",
         scrollTrigger: {
           trigger: btnRef.current,
-          start: "top 99%",
+          start: "top 70%",
           end: "top 100%",
-          scrub: 2,
+          scrub:true,
+          
         },
       }
     );
   }, []);
+
   return (
     <>
       <div
         id="page1"
-        className="h-[100vh] w-[100%] relative flex items-center justify-center flex-col text-center z-[10] py-[20px] leading-[20vh]"
+        className="h-screen w-full relative flex items-center justify-center flex-col text-center z-[10] leading-tight px-4 md:px-20"
       >
         <h1
           ref={textRef}
-          className="text-[6vw] font-[800] relative z-10 text-[#f7f0e0] 
-        before:content-['WELCOME_TO_BOOKNEST'] font-edu before-stroke before:absolute before:top-[-8px] before:left-[-8px] before:z-[-1] before:text-black"
+          className="text-xl my-0 md:text-4xl lg:text-5xl font-bold relative z-10 text-[#f7f0e0] 
+            before:content-['WELCOME_TO_BOOKNEST'] font-edu before-stroke before:absolute before:top-[-0.5rem] before:left-[-0.5rem] before:z-[-1] before:text-black md:text-[8rem] md:leading-loose"
         >
           WELCOME TO BOOKNEST
         </h1>
         <h2
           ref={text1Ref}
-          className="text-[30px] font-[800]  mt-[10px] mb-[20px] text-[#f7f0e0] uppercase tracking-[4px]"
+          className="text-xs md:text-base font-extrabold mt-4 mb-4 text-[#f7f0e0] uppercase tracking-wider md:text-[2.8rem] md:tracking-loose"
         >
           Your cozy corner for discovering captivating books
         </h2>
       </div>
-      <button
-        ref={btnRef}
-        className="group h-[8vh] w-[12vw]  border-[2px] rounded-[14px] translate-x-[76vw] text-[2vw] translate-y-[-80px] z-40 transform transition-transform duration-300 hover:bg-[#f7f0e0]  hover:text-[#000] "
-      >
-        Explore <i class="ri-arrow-right-line text-white group-hover:text-black  transition-colors  duration-300"></i>
-      </button>
+
+      <div className="w-full flex justify-center md:justify-end px-4 md:px-16 mt-[-40px] md:mt-[-80px]">
+        <button
+          ref={btnRef}
+          onClick={()=>{}}
+          className="group px-6 py-2 md:px-8 md:py-3 border-2 rounded-xl text-sm md:text-lg z-40 transform transition-transform duration-200 hover:bg-[#f7f0e0] hover:text-black text-[#f7f0e0] inset-0 bg-black bg-opacity-90 bg-transparent items-center justify-center "
+        >
+          Explore{" "}
+          <i className="ri-arrow-right-line text-white group-hover:text-black transition-colors duration-300"></i>
+        </button>
+      </div>
     </>
   );
 }
+ 

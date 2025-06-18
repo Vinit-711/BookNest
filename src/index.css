@@ -4,7 +4,7 @@
 
 @layer utilities {
   .before-stroke::before {
-    -webkit-text-stroke: 4px #563a1f;
+    -webkit-text-stroke: 0.09em #563a1f;
   }
 }
 *{

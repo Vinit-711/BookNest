@@ -1,41 +1,36 @@
-import React from "react";
-import { books } from "../Data/BooksData";
-
-export default function Scroller() {
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+export default function Scroller({Scrltxt}) {
+  const sectionRef = useRef(null);
+  const textRef = useRef(null);
+  useEffect(() => {
+    const trigger = sectionRef.current;
+    const text = textRef.current;
+    gsap.to(text, {
+      x: "-60%",
+      scrollTrigger: {
+        trigger: trigger,
+        scroller: "",
+        start: "top 0%",
+        end: "top -70%",
+        scrub: 0.5,
+        pin: true,
+      },
+    });
+  });
   return (
-    <div className="h-[100vh] w-full z-[10] flex relative items-center ">
-      <h3 className="text-[14vh] font-[800] mx-[5vw] text-wrap">
-        Trending <span className="font-dancing">Books</span>
-      </h3>
-      <div
-        id="scroller"
-        className="w-full whitespace-nowrap overflow-x-hidden overflow-y-hidden px-4 py-10 flex gap-[80px]  "
+    <div
+      ref={sectionRef}
+      className=" min-h-64 w-full relative flex items-center justify-center "
+    >
+      <h1
+        ref={textRef}
+        className="uppercase font-poppins text-7xl mt-10 mb-0 font-[700] translate-x-[50%] whitespace-nowrap tracking-widest"
       >
-        {books.map((book, index) => (
-          <div
-            key={index}
-            className="group relative min-w-[200px] h-[40vh] bg-white rounded-xl shadow-md overflow-hidden text-wrap animate-scrollX "
-          >
-            <img
-              src={book.image}
-              alt={`book-${index}`}
-              className="w-full h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-10 "
-            />
-
-            <a href="/">
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500  ">
-                <h2 className="text-[3vh] font-semibold text-gray-800 mb-1">
-                  {book.title}
-                </h2>
-                <p className="text-[2vh] text-gray-700">{book.description}</p>
-                <span className="mt-2 inline-block px-2 py-1 bg-blue-100 text-blue-700 text-[10px] rounded">
-                  {book.category}
-                </span>
-              </div>
-            </a>
-          </div>
-        ))}
-      </div>
+        {Scrltxt}
+      </h1>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function Page5() {
   const containerRef = useRef(null);
   const titles = useRef([]);
   const images = useRef([]);
-  
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -64,11 +64,14 @@ export default function Page5() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="min-h-screen w-full relative overflow-hidden">
+    <div
+      ref={sectionRef}
+      className="min-h-screen w-full relative overflow-hidden"
+    >
       <div ref={containerRef} className="w-full h-full  text-white flex">
         <div className="select-none w-[10%] h-full flex flex-col items-center justify-center text-center px-2">
           <div className="border-l-4 border-white h-1/2"></div>
-          <span className="rotate-[-90deg] mt-16 tracking-[0.1rem] text-sm text-white/50 ">
+          <span className="rotate-[-90deg] mt-16 tracking-[0.1rem] text-sm md:text-2xl text-white/50 ">
             FEATURES
           </span>
         </div>
@@ -98,26 +101,26 @@ export default function Page5() {
           ].map((item, i) => (
             <div
               key={i}
-              className="absolute select-none flex flex-col items-center justify-center w-full h-full gap-[40px] whitespace-nowrap tracking-[20px]"
+              className="absolute select-none flex flex-col md:flex-row md:gap-14 items-center justify-center w-full h-full gap-[40px] whitespace-nowrap tracking-[20px]"
             >
               <h1
                 ref={(el) => (titles.current[i] = el)}
-                className="text-xl font-bold drop-shadow-lg"
+                className="text-xl md:text-[6rem] font-bold drop-shadow-lg"
               >
                 {item.title}
               </h1>
               <img
                 ref={(el) => (images.current[i] = el)}
                 src={item.image}
-                className="h-40 w-40 rounded-full mt-6 object-cover shadow-2xl"
+                className="h-40 w-40 md:h-72 md:w-72 rounded-full mt-6 object-cover shadow-2xl"
                 alt={item.title}
               />
             </div>
           ))}
         </div>
 
-        <div className="w-[10%] select-none h-full flex items-center justify-center px-2">
-          <div className="text-sm text-white/60 rotate-[90deg] whitespace-nowrap tracking-[0.2rem]">
+        <div className="w-[10%] select-none h-full md:mt-8 flex items-center justify-center px-2">
+          <div className="text-sm text-white/60 md:text-[1.2rem]  rotate-[90deg] whitespace-nowrap tracking-[0.2rem]">
             FROM A CAGED WORLD TO BOUNDLESS TALES
           </div>
         </div>

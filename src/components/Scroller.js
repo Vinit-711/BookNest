@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-export default function Scroller({Scrltxt}) {
+export default function Scroller() {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Scroller({Scrltxt}) {
       scrollTrigger: {
         trigger: trigger,
         scroller: "",
-        start: "top 0%",
+        start: "top 30%",
         end: "top -70%",
         scrub: 0.5,
         pin: true,
@@ -27,9 +27,9 @@ export default function Scroller({Scrltxt}) {
     >
       <h1
         ref={textRef}
-        className="uppercase font-poppins text-7xl mt-10 mb-0 font-[700] translate-x-[50%] whitespace-nowrap tracking-widest"
+        className="uppercase font-poppins text-7xl md:text-[10rem] mt-10 mb-0 font-[700] translate-x-[50%] whitespace-nowrap tracking-widest"
       >
-        {Scrltxt}
+        Why BookNest ?
       </h1>
     </div>
   );

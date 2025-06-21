@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SearchForm from "./SearchForm";
-import logo from '../Assets/logo.png'
+import logo from "../Assets/logo.png";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function NavBar() {
@@ -85,7 +85,10 @@ export default function NavBar() {
             <Link className="nav-link" to="/explore-books">
               Explore Books
             </Link>
-            <Link to="/Login" className="nav-link bg-[#f7f0e0] rounded-md text-[#563a1f] py-1 px-3">
+            <Link
+              to="/Login"
+              className="nav-link bg-[#f7f0e0] rounded-md text-[#563a1f] py-1 px-3"
+            >
               Log-in
             </Link>
           </div>
@@ -132,11 +135,7 @@ export default function NavBar() {
           ref={menuRef}
           className="md:hidden flex flex-col gap-4 px-9 py-[10rem] text-[1.2rem] font-semibold fixed inset-0 bg-black bg-opacity-90 items-center justify-center text-white z-[50]"
         >
-          <Link
-            className="nav-link"
-            to="/"
-            onClick={() => setMenuOpen(false)}
-          >
+          <Link className="nav-link" to="/" onClick={() => setMenuOpen(false)}>
             Home
           </Link>
           <Link
@@ -160,7 +159,8 @@ export default function NavBar() {
           >
             Explore Books
           </Link>
-          <Link to="/Login"
+          <Link
+            to="/Login"
             className="nav-link bg-[#f7f0e0] rounded-md text-[#563a1f] py-1 px-3"
             onClick={() => setMenuOpen(false)}
           >

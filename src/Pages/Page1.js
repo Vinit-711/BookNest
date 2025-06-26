@@ -102,7 +102,7 @@ export default function Page1() {
       >
         <h1
           ref={textRef}
-          className="text-2xl my-0 md:text-[3rem] lg:text-[5rem] font-bold relative z-10 text-[#f7f0e0] 
+          className="text-xl my-0 md:text-[3rem] lg:text-[5rem] font-bold relative z-10 text-[#f7f0e0] 
             before:content-['WELCOME_TO_BOOKNEST'] font-edu before-stroke before:absolute before:top-[-0.5rem] before:left-[-0.5rem] before:z-[-1] before:text-black  md:leading-loose"
         >
           WELCOME TO BOOKNEST

@@ -1,13 +1,14 @@
 {
-  "homepage": "https://github.com/Vinit-711/BookNest",
   "name": "booknest",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.10.0",
     "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
     "react": "^19.1.0",

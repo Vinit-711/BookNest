@@ -1,23 +1,46 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { supabase } from "../supabaseClient"; // ✅ Import Supabase client
 import Footer from "../components/Footer";
+
 const LoginPage = () => {
   const loginRef = useRef(null);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     gsap.fromTo(
       loginRef.current,
-      {
-        x: 60,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.5,
-      }
+      { x: 60, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5 }
     );
   }, []);
+
+  // 🧩 Email/password sign up
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    if (error) {
+      alert("Error signing up: " + error.message);
+    } else {
+      alert("Check your email to confirm your signup.");
+    }
+    
+  };
+
+  // 🌐 Sign in with Google
+  const signInWithGoogle = async () => {
+    await supabase.auth.signInWithOAuth({ provider: "google" });
+  };
+
+  // 🌐 Sign in with GitHub
+  const signInWithGitHub = async () => {
+    await supabase.auth.signInWithOAuth({ provider: "github" });
+  };
 
   return (
     <>
@@ -28,7 +51,7 @@ const LoginPage = () => {
           </div>
 
           <div className="space-y-3">
-            <button className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-[#f7f0e0]  text-sm font-medium text-gray-700 hover:bg-gray-50">
+            <button onClick={signInWithGoogle} className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-[#f7f0e0]  text-sm font-medium text-gray-700 hover:bg-gray-50">
               <div className="bg-white p-2 rounded-full">
                 <svg className="w-4" viewBox="0 0 533.5 544.3">
                   <path
@@ -51,7 +74,7 @@ const LoginPage = () => {
               </div>
               Sign Up with Google
             </button>
-            <button className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-[#f7f0e0] text-sm font-medium text-black hover:bg-gray-50">
+            <button onClick={signInWithGitHub} className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-[#f7f0e0] text-sm font-medium text-black hover:bg-gray-50">
               <svg className="w-6" viewBox="0 0 32 32">
                 <path
                   fillRule="evenodd"
@@ -73,7 +96,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSignup}>
             <div>
               <label htmlFor="email" className="sr-only">
                 Email
@@ -82,6 +105,7 @@ const LoginPage = () => {
                 id="email"
                 name="email"
                 type="email"
+                onChange={(e)=>setEmail(e.target.value)}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-[#563a1f]"
                 placeholder="Email"
@@ -96,12 +120,14 @@ const LoginPage = () => {
                 name="password"
                 type="password"
                 required
+                onChange={(e)=>setPassword(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-[#563a1f]"
                 placeholder="Password"
               />
             </div>
             <button
               type="submit"
+              
               className="w-full flex justify-center py-2 px-4 border border-[#f7f0e0] rounded-md shadow-sm text-sm font-medium text-white  hover:bg-[#f7f0e0] hover:text-[#563a1f]"
             >
               Sign Up

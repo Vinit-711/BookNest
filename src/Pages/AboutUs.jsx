@@ -43,7 +43,7 @@ export default function AboutUs() {
     <>
       <div
         ref={containerRef}
-        className="min-h-screen bg-[#563a1f] flex flex-col md:flex-row md:gap-14 items-center justify-center p-8 pt-36"
+        className="min-h-screen bg-[#563a1f] flex flex-col md:flex-col md:gap-14 items-center justify-center p-8 pt-36"
       >
         <div ref={imageRef} className="mb-6 md:mb-0 md:mr-10">
           <img
@@ -78,7 +78,7 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-      <Footer />
+        <Footer />
       </div>
     </>
   );

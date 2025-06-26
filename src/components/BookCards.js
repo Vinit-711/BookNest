@@ -8,7 +8,7 @@ export default function BookCards({ book }) {
         alt={book.title}
         className="h-[15rem] md:h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-10 md:w-[40rem]"
       />
-      <a href="/">
+      <a  href="/">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <h2 className="text-md font-semibold text-gray-800 mb-1">
             {book.title}

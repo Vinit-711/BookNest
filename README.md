@@ -20,6 +20,7 @@
 - **Styling**: Tailwind CSS
 - **Data Handling**: JavaScript (static arrays or JSON)
 - **Animations**: GSAP
+- **APIs**: Google Books API
 
 ---
 
@@ -35,3 +36,21 @@ BookNest/
 │   ├── pages/              # Page-level components (e.g., Home, Authors)
 │   ├── App.js              # Main app file
 │   └── index.js            # Entry point
+│   └── HomePage.js         # HomePage
+│   └── supabaseClient.js   # Supabse
+│   └── Auth.js             # Supabse Authentication
+
+```
+
+## 💻 Installation
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the app: `npm start`
+4. Open [http://localhost:3000](http://localhost:3000)
+
+## 📦 Build for Production
+```bash
+npm run build
+
+```

@@ -1,9 +1,7 @@
-// src/Data/AuthorsData.js
 import { fetchBooksByAuthor } from "./BooksData";
 
 export async function fetchAuthorsBySearch(searchTerm) {
   try {
-    // Fetch books that match the search term (title or author)
     const books = await fetchBooksByAuthor(searchTerm);
 
     const uniqueAuthors = [];

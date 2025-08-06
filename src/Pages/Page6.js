@@ -19,7 +19,7 @@ export default function Page6() {
       {
         y: -30,
         opacity: 1,
-        duration: 1,
+        duration: 2,
         delay:1,
         scrollTrigger: {
           trigger: headRef.current,
@@ -58,7 +58,7 @@ export default function Page6() {
         {genres.map((item, i) => (
           <div
             key={i}
-            className="group h-[14rem] w-[18rem] sm:h-[20rem] sm:w-[22rem] lg:h-[22rem] lg:w-[22rem] overflow-hidden rounded-[20px] relative transition-all duration-300"
+            className="group h-[14rem] w-[18rem] sm:h-[20rem] sm:w-[22rem] lg:h-[20rem] lg:w-[22rem] overflow-hidden rounded-[20px] relative transition-all duration-300"
           >
             <h2 className="absolute z-10 h-full w-full flex items-center justify-center text-xl sm:text-2xl md:text-3xl font-extrabold text-[#563a1f] uppercase bg-[#f7f0e0] bg-opacity-90 transition-all duration-300 group-hover:text-[#f7f0e0] group-hover:bg-transparent">
               {item.genre}
@@ -66,6 +66,7 @@ export default function Page6() {
             <img
               src={item.image}
               alt={item.genre}
+        
               className="object-cover w-full h-full scale-[1.1] transition-transform duration-300 group-hover:scale-100"
             />
           </div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+
 import { fetchBooksByAuthor } from "../Data/BooksData";
+import LoadingPage from "./LoadingPage";
 
 export default function ExploreBooks() {
   const [searchTerm, setSearchTerm] = useState("Trending Books");
@@ -47,7 +48,7 @@ export default function ExploreBooks() {
       </div>
 
       {loading ? (
-        <p className="text-center text-[#f7f0e0]">Loading books...</p>
+        <LoadingPage/>
       ) : Array.isArray(books) && books.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {books.map((book, index) => {
@@ -66,7 +67,7 @@ export default function ExploreBooks() {
                 <img
                   src={image}
                   alt={title}
-                  className="w-full h-40 object-cover"
+                  className="w-full h-48 object-cover"
                 />
                 <div className="p-3 text-center">
                   <h2 className="text-lg font-semibold text-[#563a1f] truncate">
@@ -84,7 +85,7 @@ export default function ExploreBooks() {
         <p className="text-center text-[#f7f0e0]">No books found.</p>
       )}
 
-      <Footer />
+     
     </div>
   );
 }

@@ -4,7 +4,7 @@ export async function fetchBooksByAuthor(authorName) {
     const response = await fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
         authorName
-      )}&maxResults=20&langRestrict=en` // ✅ Added here
+      )}&maxResults=30&langRestrict=en`
     );
 
     const data = await response.json();

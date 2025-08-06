@@ -37,7 +37,7 @@ export default function NavBar() {
     tl.fromTo(
       ".nav-link",
       { y: -80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.1 }
+      { y: 0, opacity: 1, duration: 1.2, stagger: 0.2 }
     );
   }, []);
 
@@ -64,7 +64,7 @@ export default function NavBar() {
   // Logout
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -90,12 +90,22 @@ export default function NavBar() {
             id="nav-links"
             className="hidden md:flex gap-6 md:gap-5 lg:gap-8 text-[1rem] md:text-[1rem] lg:text-[1.2rem] font-semibold"
           >
-            <Link className="nav-link" to="/">Home</Link>
-            <Link className="nav-link" to="/About">About</Link>
-            <Link className="nav-link" to="/explore-authors">Explore Authors</Link>
-            <Link className="nav-link" to="/explore-books">Explore Books</Link>
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+            <Link className="nav-link" to="/About">
+              About
+            </Link>
+            <Link className="nav-link" to="/explore-authors">
+              Explore Authors
+            </Link>
+            <Link className="nav-link" to="/explore-books">
+              Explore Books
+            </Link>
             {session && (
-              <Link className="nav-link" to="/dashboard">Dashboard</Link>
+              <Link className="nav-link" to="/dashboard">
+                Dashboard
+              </Link>
             )}
           </div>
         </div>
@@ -104,8 +114,12 @@ export default function NavBar() {
         <div className="hidden md:flex gap-4 items-center">
           {!session ? (
             <>
-              <Link to="/login" className="nav-link bg-[#f7f0e0] rounded-md text-[#563a1f] py-2 px-4">Login</Link>
-              <Link to="/signup" className="nav-link border border-[#f7f0e0] rounded-md text-[#f7f0e0] py-2 px-4 hover:bg-[#f7f0e0] hover:text-[#563a1f]">Sign Up</Link>
+              <Link
+                to="/login"
+                className="nav-link bg-[#f7f0e0] rounded-md text-[#563a1f] py-2 px-4"
+              >
+                Login
+              </Link>
             </>
           ) : (
             <button
@@ -131,9 +145,19 @@ export default function NavBar() {
               xmlns="http://www.w3.org/2000/svg"
             >
               {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -146,17 +170,48 @@ export default function NavBar() {
           ref={menuRef}
           className="md:hidden flex flex-col gap-4 px-9 py-[10rem] text-[1.2rem] font-semibold fixed inset-0 bg-black bg-opacity-90 items-center justify-center text-white z-[50]"
         >
-          <Link className="nav-link" to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link className="nav-link" to="/About" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link className="nav-link" to="/explore-authors" onClick={() => setMenuOpen(false)}>Explore Authors</Link>
-          <Link className="nav-link" to="/explore-books" onClick={() => setMenuOpen(false)}>Explore Books</Link>
+          <Link className="nav-link" to="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
+          <Link
+            className="nav-link"
+            to="/About"
+            onClick={() => setMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            className="nav-link"
+            to="/explore-authors"
+            onClick={() => setMenuOpen(false)}
+          >
+            Explore Authors
+          </Link>
+          <Link
+            className="nav-link"
+            to="/explore-books"
+            onClick={() => setMenuOpen(false)}
+          >
+            Explore Books
+          </Link>
           {session && (
-            <Link className="nav-link" to="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+            <Link
+              className="nav-link"
+              to="/dashboard"
+              onClick={() => setMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
           )}
           {!session ? (
             <>
-              <Link to="/login" className="nav-link bg-[#f7f0e0] text-[#563a1f] rounded-md py-1 px-4" onClick={() => setMenuOpen(false)}>Login</Link>
-              <Link to="/signup" className="nav-link border border-[#f7f0e0] text-[#f7f0e0] rounded-md py-1 px-4" onClick={() => setMenuOpen(false)}>Sign Up</Link>
+              <Link
+                to="/login"
+                className="nav-link bg-[#f7f0e0] text-[#563a1f] rounded-md py-1 px-4"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </Link>
             </>
           ) : (
             <button

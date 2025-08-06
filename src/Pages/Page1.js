@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
+import { useNavigate } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Page1() {
   const textRef = useRef([]);
   const text1Ref = useRef([]);
   const btnRef = useRef([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
@@ -39,7 +39,7 @@ export default function Page1() {
                 trigger: textRef.current,
                 start: isMobile ? "top 40%" : "top 45%",
                 end: "top 100%",
-                
+
                 scrub: 2,
               },
             }
@@ -118,7 +118,9 @@ export default function Page1() {
       <div className="w-full flex justify-center md:justify-end px-4 md:px-16 mt-[-40px] md:mt-[-80px]">
         <button
           ref={btnRef}
-          onClick={() => {}}
+          onClick={() => {
+            navigate("/explore-books");
+          }}
           className="group px-6 py-2 md:px-8 md:py-3 border-2 rounded-xl text-sm md:text-lg z-40 transform transition-transform duration-200 hover:bg-[#f7f0e0] hover:text-black text-[#f7f0e0] inset-0 bg-black bg-opacity-90 bg-transparent items-center justify-center "
         >
           Explore{" "}

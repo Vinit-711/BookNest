@@ -2,8 +2,41 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchBooksByAuthor } from "../Data/BooksData";
 import gsap from "gsap";
+import LoadingPage from "../components/LoadingPage";
+import { supabase } from "../supabaseClient"; // make sure you have this
 
 export default function BookDetailPage() {
+  const handleAddBook = async (status) => {
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      alert("Please log in to add books.");
+      navigate("/login");
+      return;
+    }
+
+    const { error: insertError } = await supabase.from("user_books").upsert(
+      {
+        user_id: user.id,
+        title: book.title,
+        status,
+        image: book.image || null,
+        updated_at: new Date(),
+      },
+      { onConflict: ["user_id", "title"] }
+    ); // optional: prevents duplicate titles per user
+
+    if (insertError) {
+      console.error("Insert error:",insertError.message, insertError.details);
+      alert(`Failed to update bookshelf : ${insertError.message}`);
+    } else {
+      alert(`Book added to your ${status.toUpperCase()}!`);
+    }
+  };
+
   const { bookId } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
@@ -61,11 +94,7 @@ export default function BookDetailPage() {
   }, [bookId]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#563a1fbb] text-[#f7f0e0]">
-        <p>Loading book details...</p>
-      </div>
-    );
+    return <LoadingPage />;
   }
 
   if (!book) {
@@ -91,26 +120,26 @@ export default function BookDetailPage() {
           src={book.image || "/images/placeholder.jpg"}
           alt={book.title}
           onError={(e) => (e.target.src = "/images/placeholder.jpg")}
-          className="w-full md:w-60 h-auto rounded-lg object-cover"
+          className="w-full md:w-60 h-auto rounded-lg object-contain"
         />
         <div className="flex-1">
           <div>
-
-          <h1 className="text-3xl text-[#563a1f] font-bold mb-2">
-            {book.title}
-          </h1>
-          <h2 className="text-xl text-[#563a1fb7] mb-2">
-            {book.category || "General"}
-          </h2>
-          <p className="text-sm text-[#563a1f] mb-3">
-            {book.description || "No description available."}
-          </p>
+            <h1 className="text-3xl text-[#563a1f] font-bold mb-2">
+              {book.title}
+            </h1>
+            <h2 className="text-xl text-[#563a1fb7] mb-2">
+              {book.category || "General"}
+            </h2>
+            <p className="text-sm text-[#563a1f] mb-3">
+              {book.description || "No description available."}
+            </p>
           </div>
 
           {book.averageRating ? (
             <div className="text-sm text-[#563a1f] mb-2">
-              ⭐ <strong className="text-[#563a1f] ">{book.averageRating}</strong> / 5 from{" "}
-              {book.ratingsCount || "a few"} readers (Google)
+              ⭐{" "}
+              <strong className="text-[#563a1f] ">{book.averageRating}</strong>{" "}
+              / 5 from {book.ratingsCount || "a few"} readers (Google)
             </div>
           ) : (
             <div className="text-sm text-[#563a1f] mb-2">
@@ -142,13 +171,22 @@ export default function BookDetailPage() {
           </div>
 
           <div className="flex flex-wrap gap-3 mt-4">
-            <button className="bg-[#563a1f] text-white px-4 py-2 rounded-lg hover:bg-[#563a1f6f] hover:text-[#563a1f] transition">
+            <button
+              onClick={() => handleAddBook("reading")}
+              className="bg-[#563a1f] text-white px-4 py-2 rounded-lg hover:bg-[#563a1f6f] hover:text-[#563a1f] transition"
+            >
               Add to Bookshelf
             </button>
-            <button className="border border-[#563a1f] text-[#563a1f] px-4 py-2 rounded-lg hover:bg-[#af886389] transition">
+            <button
+              onClick={() => handleAddBook("tbr")}
+              className="border border-[#563a1f] text-[#563a1f] px-4 py-2 rounded-lg hover:bg-[#af886389] transition"
+            >
               Add to TBR
             </button>
-            <button className="bg-[#563a1f6f] text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+            <button
+              onClick={() => handleAddBook("completed")}
+              className="bg-[#563a1f6f] text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition"
+            >
               Mark as Read
             </button>
           </div>

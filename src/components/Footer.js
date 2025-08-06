@@ -21,7 +21,8 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold text-center">Quick Links</h3>
+          <h3 className="text-lg text-[#6b4f3b] font-semibold text-center md:pb-6">Quick Links</h3>
+          <h3 className="text-lg text-[#6b4f3b] font-extrabold text-center md:pb-6">This is just a beta version i will add this featurs later. </h3>
           <ul className="space-y-2 text-sm">
             <li><Link to="/" className="text-[#6b4f3b] transition">Home</Link></li>
             <li><Link to="/genres" className="text-[#6b4f3b] transition">Genres</Link></li>

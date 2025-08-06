@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { fetchBooksByAuthor } from "../Data/BooksData";
-import BookCards from "../components/BookCards";
+// import BookCards from "../components/BookCards";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,6 +46,7 @@ export default function Page2() {
                 trigger: headingRef.current,
                 start: isMobile ? "top 80%" : "top 70%",
                 end: "top 40%",
+
                 scrub: 1.5,
               },
             }
@@ -62,6 +64,7 @@ export default function Page2() {
                 trigger: scrollerRef.current,
                 start: isMobile ? "top 85%" : "top 70%",
                 end: "top 40%",
+
                 scrub: 1.5,
               },
             }
@@ -92,7 +95,31 @@ export default function Page2() {
       >
         {books.length > 0 ? (
           books.map((book, index) => (
-            <BookCards key={index} book={book} />
+            <div
+              key={index}
+              className="group h-full relative min-w-40 md:w-40 md:h-full gap-1 md:min-w-[20rem] bg-white rounded-xl shadow-md overflow-hidden text-wrap animate-scrollX"
+            >
+              <img
+                src={book.image}
+                alt={book.title}
+                className="h-[15rem] md:h-full object-cover rounded-xl transition-opacity duration-500 group-hover:opacity-10 md:w-[40rem]"
+              />
+              <Link
+                to={`/book/${encodeURIComponent(
+                  book.title.toLowerCase().replace(/\s+/g, "-")
+                )}`}
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h2 className="text-md font-semibold text-gray-800 mb-1">
+                    {book.title}
+                  </h2>
+                  <p className="text-sm text-gray-700">{book.description}</p>
+                  <span className="text-md mt-2 inline-block px-2 py-1 bg-blue-100 text-blue-700 rounded">
+                    {book.category}
+                  </span>
+                </div>
+              </Link>
+            </div>
           ))
         ) : (
           <p className="text-[#f7f0e0] text-center">Loading...</p>

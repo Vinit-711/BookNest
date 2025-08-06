@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+
 import { fetchAuthorsBySearch } from "../Data/AuthorsData";
+import LoadingPage from "./LoadingPage";
 
 const trendingAuthors = [
   "Stephen King",
@@ -69,7 +70,7 @@ export default function ExploreAuthors() {
 
       {/* Author Grid or Message */}
       {loading ? (
-        <p className="text-center text-[#f7f0e0]">Loading authors...</p>
+        <LoadingPage/>
       ) : authors.length ? (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           {authors.map((author) => (
@@ -101,7 +102,7 @@ export default function ExploreAuthors() {
         )
       )}
 
-      <Footer />
+     
     </div>
   );
 }

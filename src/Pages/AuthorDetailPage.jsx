@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { fetchBooksByAuthor } from "../Data/BooksData";
 import gsap from "gsap";
+import LoadingPage from "../components/LoadingPage";
 
 export default function AuthorDetailPage() {
   const { id } = useParams();
@@ -64,11 +65,7 @@ export default function AuthorDetailPage() {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex justify-center items-center text-white bg-[#563a1fbb]">
-        <p>Loading author...</p>
-      </div>
-    );
+    return <LoadingPage />;
   }
 
   if (!author) {
@@ -89,7 +86,7 @@ export default function AuthorDetailPage() {
         ← Back
       </button>
 
-      <div className="max-w-4xl mx-auto bg-[#f7f0e0] text-[#563a1f] rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-6">
+      <div className="max-w-7xl mx-auto bg-[#f7f0e0] text-[#563a1f] rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-6">
         <div className="flex md:flex-col">
           <img
             src={author.image}
@@ -97,21 +94,6 @@ export default function AuthorDetailPage() {
             className="w-full md:w-60 h-auto max-h-80 rounded-lg object-contain bg-[#563a1f] py-4 my-4"
             onError={(e) => (e.target.src = "/images/placeholder.jpg")}
           />
-          <div className="mt-4 bg-[#fff8e7] text-[#563a1f] rounded-lg shadow p-4 text-sm space-y-2">
-            <h3 className="text-base text-[#563a1f]  font-semibold mb-2">Author Facts</h3>
-            <p className="text-[#563a1f] ">
-              <strong className="text-[#563a1f] ">Genre:</strong>{" "}
-              {author.bestsellers[0]?.category || "Fiction"}
-            </p>
-            <p className="text-[#563a1f] ">
-              <strong className="text-[#563a1f] ">Total Books:</strong> {author.bestsellers.length}
-            </p>
-            <p className="text-[#563a1f] ">
-              <strong className="text-[#563a1f] ">First Book:</strong>{" "}
-              {author.bestsellers[author.bestsellers.length - 1]?.title ||
-                "N/A"}
-            </p>
-          </div>
         </div>
 
         <div className="flex-1">
@@ -132,7 +114,7 @@ export default function AuthorDetailPage() {
                   book.title.toLowerCase().replace(/\s+/g, "-")
                 )}`}
                 key={idx}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:scale-105 transition duration-300"
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-[#563a1f] hover:shadow-2xl hover:scale-105 transition duration-300"
               >
                 <img
                   src={book.image}

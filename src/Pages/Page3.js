@@ -26,18 +26,17 @@ export default function Page4() {
             {
               x: isMobile ? -50 : -60,
               y: isMobile ? -20 : -40,
-              opacity:0,
+              opacity: 0,
             },
             {
               x: isMobile ? -5 : -25,
               y: isMobile ? -10 : -25,
-              opacity:1,
+              opacity: 1,
               duration: 2,
               scrollTrigger: {
                 trigger: colon1Ref.current,
                 start: isMobile ? "top 85%" : "top 40%",
                 end: isMobile ? "top 60%" : "top 70%",
-                
 
                 scrub: 2,
               },
@@ -69,18 +68,18 @@ export default function Page4() {
             {
               x: isMobile ? 50 : 60,
               y: isMobile ? 20 : 40,
-              opacity:0,
+              opacity: 0,
             },
             {
               x: isMobile ? 5 : 25,
               y: isMobile ? 10 : 25,
               duration: 1.5,
-              opacity:1,
+              opacity: 1,
               scrollTrigger: {
                 trigger: colon2Ref.current,
-                start: isMobile ? "top 90%" : "top 55%",
+                start: isMobile ? "top 90%" : "top 58%",
                 end: isMobile ? "top 60%" : "top 90%",
-               
+
                 scrub: 2,
               },
             }

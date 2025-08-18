@@ -14,9 +14,7 @@ export default function ExploreBooks() {
       try {
         setLoading(true);
         const results = await fetchBooksByAuthor(searchTerm);
-        console.log("Fetched books:", results); // 👈 Debug raw data
-
-        // Filter out incomplete books
+        console.log("Fetched books:", results); 
         const cleanResults = results || [];
 
         setBooks(cleanResults);
